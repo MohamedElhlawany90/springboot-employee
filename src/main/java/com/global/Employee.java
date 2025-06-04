@@ -1,13 +1,16 @@
 package com.global;
 
-import jakarta.persistence.*;
-import lombok.Data;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "employee_app")
-@Data
 public class Employee {
 
 	@Id
@@ -30,6 +33,25 @@ public class Employee {
 	private String city;
 	private String stateOrProvince;
 	private String postalCode;
+	
+	
+	// بيانات الاتصال
+	private String email;
+	private String phoneNumber;
+	private String linkedin;
+
+	// الوظيفة
+	private String positionApplied;
+	private String referralSource;
+	private LocalDate availableStartDate;
+
+	// السيرة الذاتية
+	private String resumeFileUrl;
+
+	// الخطاب التعريفي
+	@Column(columnDefinition = "TEXT")
+	private String coverLetter;
+
 
 	public Long getId() {
 		return id;
@@ -190,35 +212,5 @@ public class Employee {
 	public void setCoverLetter(String coverLetter) {
 		this.coverLetter = coverLetter;
 	}
-
-	public LocalDateTime getSubmittedAt() {
-		return submittedAt;
-	}
-
-	public void setSubmittedAt(LocalDateTime submittedAt) {
-		this.submittedAt = submittedAt;
-	}
-
-	// بيانات الاتصال
-	private String email;
-	private String phoneNumber;
-	private String linkedin;
-
-	// الوظيفة
-	private String positionApplied;
-	private String referralSource;
-
-	private LocalDate availableStartDate;
-
-	// السيرة الذاتية
-	private String resumeFileUrl;
-
-	// الخطاب التعريفي
-	@Column(columnDefinition = "TEXT")
-	private String coverLetter;
-
-	// تاريخ التقديم
-	private LocalDateTime submittedAt;
-
 	
 }
